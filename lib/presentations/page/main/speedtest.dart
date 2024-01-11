@@ -169,10 +169,11 @@ class _SpeedtestpageState extends State<Speedtestpage> {
                           } else {
                             _uploadRate = data.transferRate;
                             started = true;
-
+                            
                             rate = _uploadRate;
                             _uploadProgress = percent.toStringAsFixed(2);
                           }
+                     
                         });
                       }, onError: (String errorMessage, String speedTestError) {
                         if (kDebugMode) {
@@ -301,16 +302,33 @@ class _SpeedtestpageState extends State<Speedtestpage> {
       decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(20))),
-      child: Column(  children:  [
-        AppBar(leading: TextButton(onPressed: (){
-          Navigator.pop(context);
-        },child: Icon(Icons.clear_outlined, color: Colors.black,),),),
+      child: Column( 
+        mainAxisAlignment: MainAxisAlignment.center,
+          children:  [
+     
         const Align(
             child: Text(
           "Sorry, I'm having trouble and I hope you can debug it again ",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.red),
-        ))
+        )),
+        const SizedBox(height: 20,),
+GestureDetector(
+  onTap: () {
+       Navigator.pop(context);
+  },
+  child: Container(
+    
+    height: 40,
+    margin: const EdgeInsets.symmetric(horizontal: 90),
+    decoration: 
+    const BoxDecoration(
+      color: Colors.green,
+      borderRadius: BorderRadius.all(Radius.circular(20))
+    ),
+    child: const Align(child: Text('OK')),
+  ),
+)
       ]),
     );
   }

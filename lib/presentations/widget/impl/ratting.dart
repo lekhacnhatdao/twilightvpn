@@ -47,7 +47,7 @@ class _RatingDialogState extends State<RatingDialog> {
                 leading: TextButton(onPressed: (){
                 Navigator.pop(context);
                 
-              },child: const Icon(Icons.clear_rounded)),
+              },child: const Icon(Icons.clear_rounded, color: Colors.white,)),
               title:  _rating <= 3?  const Icon(Icons.sentiment_neutral_sharp, color: Colors.yellow,size: 50,) : const Icon(Icons.emoji_emotions_rounded, color: Colors.yellow,size: 50,),
               centerTitle: true,
               
@@ -67,7 +67,7 @@ class _RatingDialogState extends State<RatingDialog> {
               height: 5,
             ),
             const AppBodyText(
-              text: 'Do you like ${Config.appName} ?',
+              text: 'Do you enjoy using the ${Config.appName} ?',
               textAlign: TextAlign.center,
               size: 20,
               color: AppColors.primaryDark,

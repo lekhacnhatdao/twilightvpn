@@ -170,8 +170,8 @@ class _PremiumPageState extends State<PremiumPage> {
           id: 'default_id_1',
           title: 'Ad-free experience 1 year',
           description: 'Default Description 1',
-          price: '100.000đ',
-          rawPrice: 100.00,
+          price: '599.000đ',
+          rawPrice: 200.00,
           currencyCode: 'VND',
         ),
       ];

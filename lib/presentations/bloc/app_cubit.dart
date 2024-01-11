@@ -109,7 +109,7 @@ class AppCubit extends Cubit<AppState> {
     );
   }
 
-  void _doDisconnect() {
+   void _doDisconnect() {
     final model = state.currentServer;
     if (model == null) {
       return;

@@ -54,14 +54,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   backgroundColor: Colors.white,
                   automaticallyImplyLeading: false,
                   centerTitle: true,
-                  title:  Row(
+                  title: Row(
                     children: [
                       const Image(
                         image: AssetImage('assets/images/5.png'),
                         height: 40,
                         fit: BoxFit.contain,
                       ),
-                      Text('${ Config.appName.split('T').last}'  ,
+                      Text(
+                        '${Config.appName.split('T').last}',
                         style: TextStyle(color: Colors.black),
                       ),
                     ],
@@ -95,8 +96,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                           TabBarView(controller: controller, children: const [
                         VpnPage(),
                         InforServer(),
-                        HistoryPage(),
                         Speedtestpage(),
+                        HistoryPage(),
                         SettingPage(),
                       ]),
                     ),
@@ -105,8 +106,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                       listIcon: const [
                         Icons.bolt_rounded,
                         Icons.info,
-                        Icons.history_outlined,
                         Icons.radar,
+                        Icons.history_outlined,
                         Icons.settings,
                       ],
                       onSelect: (index) {

@@ -33,28 +33,28 @@ class _VpnPageState extends State<VpnPage> {
       _maintenancePopup();
     });
     setState(() {});
-
+    
   }
 
-Future<void> _maintenancePopup() async {
-  await Future.delayed(const Duration(seconds: 7));
-  if (!this.mounted) {
-    return;
-  }
-   if ( context.read<AppCubit>().state.currentServer?.flag.isEmpty ?? true &&!_dialogShown) {
-    Future.microtask(() {
-      _showMaintenanceDialog();
-    });
-  }
-  _timer = Timer.periodic(const Duration(seconds: 60), (Timer timer) {
-    context.read<AppCubit>().fetchServerList();
-    if (context.read<AppCubit>().state.servers.isEmpty && !_dialogShown) {
+  Future<void> _maintenancePopup() async {
+    await Future.delayed(const Duration(seconds: 7));
+    if (!this.mounted) {
+      return;
+    }
+    if ( context.read<AppCubit>().state.currentServer?.flag.isEmpty ?? true &&!_dialogShown) {
       Future.microtask(() {
         _showMaintenanceDialog();
       });
     }
-  });
-}
+    _timer = Timer.periodic(const Duration(seconds: 60), (Timer timer) {
+      context.read<AppCubit>().fetchServerList();
+      if (context.read<AppCubit>().state.servers.isEmpty && !_dialogShown) {
+        Future.microtask(() {
+          _showMaintenanceDialog();
+        });
+      }
+    });
+  }
 
   void _showMaintenanceDialog() {
     if (!this.mounted) return;
@@ -102,6 +102,7 @@ Future<void> _maintenancePopup() async {
                 text: "Disconnect",
                 backgroundColor: AppColors.colorRed,
                 onPressed: () {
+                  context.read<AppCubit>().openVPN.disconnect();
                   _handleConnectButtonPressed();
                   // Navigator.pop(context);
                   Navigator.of(context).popUntil((route) => route.isFirst);
@@ -126,6 +127,14 @@ Future<void> _maintenancePopup() async {
 
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
+        if (state.isConnecting) {
+          _connectingTimer ??= Timer(const Duration(seconds: 15), () {
+            _showDisconnectDialog();
+          });
+        } else {
+          _connectingTimer?.cancel();
+          _connectingTimer = null;
+        }
         return Column(
           children: [
             const SizedBox(
@@ -331,18 +340,12 @@ Future<void> _maintenancePopup() async {
               ),
               text: 'connecting',
               onPressed: state.isConnecting
-                  ? null
+                  ? () {
+                     context.read<AppCubit>().openVPN.disconnect();
+                  }
                   : () async {
+                   
                       await context.read<AppCubit>().toggle();
-                      if (state.isConnecting) {
-                        _connectingTimer ??=
-                            Timer(const Duration(seconds: 15), () {
-                          _showDisconnectDialog();
-                        });
-                      } else {
-                        _connectingTimer?.cancel();
-                        _connectingTimer = null;
-                      }
                     },
               changeUI: state.titleStatus == 'Not connected',
             ),
@@ -364,12 +367,13 @@ Future<void> _maintenancePopup() async {
                     ? const SizedBox()
                     : Text(
                         'Time: ${state.duration}',
-                        style: const TextStyle(color: Colors.black, fontSize: 15),
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 15),
                       ),
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height/ 6,
+              height: MediaQuery.of(context).size.height / 6,
             ),
             const Custompretimum(),
           ],

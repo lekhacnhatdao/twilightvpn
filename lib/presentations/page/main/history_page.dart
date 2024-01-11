@@ -130,7 +130,7 @@ class _HistoryPageState extends State<HistoryPage> {
       builder: (context) {
         return Container(
           decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
             color: Colors.white,
           ),
           margin: const EdgeInsets.symmetric(vertical: 320, horizontal: 40),
@@ -152,7 +152,8 @@ class _HistoryPageState extends State<HistoryPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(1),
+                      height: 40,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           color: Colors.grey),
@@ -164,15 +165,16 @@ class _HistoryPageState extends State<HistoryPage> {
                             child: const Text(
                               'Cancel',
                               style:
-                                  TextStyle(fontSize: 14, color: Colors.black),
+                                  TextStyle(fontSize: 14, color: Colors.white),
                             )),
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(1),
+                      height: 40,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: Color(0xff5cffd1)),
+                          color: Colors.red),
                       child: TextButton(
                           onPressed: () {
                             getIt<AppDatabase>().deleteAllHistories(() {

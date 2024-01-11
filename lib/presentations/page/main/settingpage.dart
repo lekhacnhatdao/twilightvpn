@@ -90,12 +90,12 @@ class SettingListTile extends StatelessWidget {
 
   const SettingListTile({
     super.key,
-    required this.svgWidget,
+     this.svgWidget,
     required this.title,
     this.onPressed,
     this.color, this.ispre, this.islast,
   });
-  final Widget svgWidget;
+  final Widget ? svgWidget;
   final String title;
   final VoidCallback? onPressed;
   final Color? color;
@@ -108,6 +108,7 @@ class SettingListTile extends StatelessWidget {
     
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
+        border: Border.all(width: 1, color: const Color(0xff0ae2a5)),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -128,20 +129,7 @@ class SettingListTile extends StatelessWidget {
           title,
           style: const TextStyle(fontSize: 14, color: Colors.black),
         ),
-        trailing:  InkWell(
-            // ignore: lines_longer_than_80_chars
-            child: islast ?? false  ? const Text(Config.version) : ispre?? false ?  Container(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              // ignore: lines_longer_than_80_chars
-              decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: Color(0xffFB5607) ,
-              
-              ),
-              child: const Text('Try now', style: TextStyle(color: Colors.black),),
-            ) : const Icon(
-          Icons.arrow_forward_ios_rounded,
-          color: Colors.black,
-        )),
+      
       ),
     );
   }
