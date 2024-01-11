@@ -1,4 +1,4 @@
-package com.example.twilightvpn
+package free.vpn.securevpn.proxy.twilightvpn
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
