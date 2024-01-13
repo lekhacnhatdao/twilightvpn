@@ -93,7 +93,6 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/icons/
     - assets/opvn/
     - assets/flags/
     

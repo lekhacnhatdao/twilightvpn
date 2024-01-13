@@ -4,7 +4,7 @@ final class Config {
   static const String appName = 'Twilight VPN';
   static const version = '1.0';
   static const company = 'Lorien Technology';
-  static const bundleId = 'com.Lorien.AmazingVPN';
+  static const bundleId = 'free.vpn.securevpn.proxy.twilightvpn';
 
   // static const vpnUrl = 'https://api.shieldme.top/servers/';
 

@@ -16,7 +16,7 @@ class PrivacyPage extends StatelessWidget {
       body: const SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               '${Strings.companyName} built the ${Config.appName} app as a Free app. This SERVICE is provided by ${Strings.companyName} at no cost and is intended for use as is.',
@@ -34,6 +34,7 @@ class PrivacyPage extends StatelessWidget {
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: 16),
             Text(

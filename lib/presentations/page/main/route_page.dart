@@ -14,7 +14,7 @@ class AgreePrivacyPage extends StatelessWidget {
 
     return SafeArea(
       bottom: false,
-      child: Scaffold(backgroundColor: Colors.white,
+      child: Scaffold(backgroundColor: const Color(0xffecf2f2),
        
         extendBody: true,
         extendBodyBehindAppBar: true,
