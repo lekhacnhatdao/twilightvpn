@@ -48,7 +48,7 @@ class _RatingDialogState extends State<RatingDialog> {
                 Navigator.pop(context);
                 
               },child: const Icon(Icons.clear_rounded, color: Colors.white,)),
-              title:  _rating <= 3?  const Icon(Icons.sentiment_neutral_sharp, color: Colors.yellow,size: 50,) : const Icon(Icons.emoji_emotions_rounded, color: Colors.yellow,size: 50,),
+              title:  _rating <= 3?  const Icon(Icons.sentiment_neutral_sharp, color: Colors.yellow,size: 70,) : const Icon(Icons.emoji_emotions_rounded, color: Colors.yellow,size: 70,),
               centerTitle: true,
               
               ),
